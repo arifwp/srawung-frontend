@@ -1,20 +1,19 @@
 import type { Metadata } from "next";
-import { Poppins, Roboto } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 
-// Konfigurasi font Poppins
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"], // Tentukan berat font sesuai kebutuhan
-  variable: "--font-poppins", // CSS custom variable
-});
+// // Konfigurasi font Poppins
+// const poppins = Poppins({
+//   subsets: ["latin"],
+//   weight: ["400", "600", "700"], // Tentukan berat font sesuai kebutuhan
+//   variable: "--font-poppins", // CSS custom variable
+// });
 
-// Konfigurasi font Roboto
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-roboto",
-});
+// // Konfigurasi font Roboto
+// const roboto = Roboto({
+//   subsets: ["latin"],
+//   weight: ["400", "700"],
+//   variable: "--font-roboto",
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,8 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${roboto.variable}`}>
-        {children}
+      <body>
+        <div className="max-w-screen-xl mx-auto overflow-x-hidden">
+          {children}
+        </div>
+        {/* {children} */}
       </body>
     </html>
   );
