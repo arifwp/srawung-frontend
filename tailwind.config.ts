@@ -14,8 +14,16 @@ export default {
         roboto: ["var(--font-roboto)", "sans-serif"], // Roboto untuk kebutuhan lain
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        darkPrimary: "#212223",
+        darkSecondary: "#333639",
+        greenPrimary: "#41E9BD",
+        redPrimary: "#F42D92",
+        bluePrimary: "#53ABFF",
+        yellowPrimary: "#F1CF18",
+        yellowDark: "#88791D",
+      },
+      opacity: {
+        secondary: "0.6",
       },
     },
   },
