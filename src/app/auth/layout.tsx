@@ -9,6 +9,7 @@ interface Props {
 
 export default function AuthLayout({ children }: Props) {
   const sw = useScreenWidth();
+
   return (
     <div className="w-full h-full min-h-dvh bg-black flex flex-col md:flex-row">
       {sw > 768 && (
