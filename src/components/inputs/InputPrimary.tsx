@@ -9,6 +9,9 @@ interface Props {
   onConfirm: (value: string) => void;
   placeholder?: string;
   type?: string;
+  label?: string;
+  isError?: boolean;
+  errorMsg?: string;
 }
 
 export default function InputPrimary({
@@ -17,6 +20,9 @@ export default function InputPrimary({
   onConfirm,
   placeholder,
   type = "text",
+  label,
+  isError,
+  errorMsg,
   ...props
 }: Props) {
   const [data, setData] = useState<string>(inputValue?.toString() ?? "");
@@ -35,17 +41,24 @@ export default function InputPrimary({
   };
 
   return (
-    <input
-      className={clsx(
-        `w-full p-3 input-primary rounded-md md:rounded-lg`,
-        className
+    <div className={clsx(`w-full flex flex-col`, className)}>
+      {label && <label className="text-sm mb-2">{label}</label>}
+
+      <input
+        className={clsx(`w-full p-3 input-primary rounded-md md:rounded-lg`)}
+        type={type}
+        onChange={handleChange}
+        autoComplete="off"
+        value={data}
+        placeholder={placeholder ? placeholder : undefined}
+        {...props}
+      />
+
+      {isError && (
+        <p className="mt-2 text-sm text-red-400">
+          {errorMsg || "Periksa kembali inputan anda"}
+        </p>
       )}
-      type={type}
-      onChange={handleChange}
-      autoComplete="off"
-      value={data}
-      placeholder={placeholder ? placeholder : undefined}
-      {...props}
-    />
+    </div>
   );
 }
