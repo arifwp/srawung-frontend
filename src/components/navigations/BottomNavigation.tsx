@@ -1,6 +1,6 @@
 "use client";
 
-import { bottomNavigationList } from "@/constants/bottomNavigationList";
+import { navigationList } from "@/constants/navigationList";
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -20,7 +20,7 @@ export default function BottomNavigation({ className = "", ...rest }: Props) {
       )}
       {...rest}
     >
-      {bottomNavigationList.map((item) => {
+      {navigationList.map((item) => {
         const isActive = pathname === item.link;
 
         return (
@@ -29,17 +29,22 @@ export default function BottomNavigation({ className = "", ...rest }: Props) {
             href={item.link}
             className={clsx(
               `w-[46px] h-[46px] font-medium flex justify-center items-center rounded-full`,
-              {
-                "bg-yellowPrimary gap-2 text-darkPrimary": isActive,
-              }
+              ""
             )}
           >
-            <item.outlineIcon
-              className={clsx(`h-7 w-7 flex items-center justify-center`, {
-                "text-darkPrimary": isActive,
-              })}
-              aria-hidden="true"
-            />
+            {isActive ? (
+              <item.filledIcon
+                className={clsx(`h-7 w-7 flex items-center justify-center`, {
+                  "text-yellowPrimary": isActive,
+                })}
+                aria-hidden="true"
+              />
+            ) : (
+              <item.outlineIcon
+                className={clsx(`h-7 w-7 flex items-center justify-center`)}
+                aria-hidden="true"
+              />
+            )}
           </Link>
         );
       })}
