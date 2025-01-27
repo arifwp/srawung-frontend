@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        "sidebar-mobile": "calc(100% - 72px)",
+        "sidebar-desktop": "calc(100% - 140px)",
+      },
       fontFamily: {
         sans: ["var(--font-poppins)", ...fontFamily.sans], // Menggunakan Poppins sebagai default font sans-serif
         roboto: ["var(--font-roboto)", "sans-serif"], // Roboto untuk kebutuhan lain
@@ -21,6 +25,7 @@ export default {
         bluePrimary: "#53ABFF",
         yellowPrimary: "#F1CF18",
         yellowDark: "#88791D",
+        placeholderColor: "#9BA3AF",
       },
       opacity: {
         secondary: "0.6",
