@@ -8,30 +8,33 @@ import { useState } from "react";
 import * as yup from "yup";
 
 interface FormValues {
-  username: string;
+  email: string;
 }
 
 const initialValues = {
-  username: "",
+  email: "",
 };
-export default function RegisterPage() {
+export default function page() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: yup.object().shape({
-      username: yup.string().required("Username harus diisi"),
+      email: yup
+        .string()
+        .required("Email harus diisi")
+        .email("Format email salah"),
     }),
     onSubmit: (values: FormValues) => {
-      console.log("values username", values.username);
+      console.log("values email", values.email);
       setIsLoading(true);
 
       setTimeout(() => {
         setIsLoading(false);
 
         router.push("password");
-        localStorage.setItem("registeredUsername", values.username);
+        localStorage.setItem("registeredEmail", values.email);
       }, 3000);
     },
   });
@@ -45,24 +48,19 @@ export default function RegisterPage() {
           </h1>
 
           <p className="text-sm md:text-md mt-2 opacity-secondary">
-            Pilih username anda dan mulai daftarkan akun anda
+            Daftarkan email anda dan mulai gunakan aplikasi
           </p>
 
           <InputPrimary
             className="mt-12"
-            placeholder="Username"
+            placeholder="Email"
+            label="Email"
+            isError={!!formik.touched.email && !!formik.errors.email}
+            errorMsg={formik.errors.email}
             onConfirm={(value: string) => {
-              console.log("value", value);
-
-              formik.setFieldValue("username", value);
+              formik.setFieldValue("email", value);
             }}
           />
-
-          {formik.touched.username && formik.errors.username && (
-            <p className="mt-2 text-sm text-red-400">
-              {formik.errors.username}
-            </p>
-          )}
         </div>
 
         <PrimaryButton

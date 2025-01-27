@@ -15,7 +15,7 @@ const initialValues: FormValues = {
   confirmationPassword: "",
 };
 
-export default function PasswordPage() {
+export default function page() {
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: yup.object().shape({
@@ -27,7 +27,7 @@ export default function PasswordPage() {
     onSubmit: (values: FormValues) => {
       console.log("values password", values);
 
-      localStorage.removeItem("registeredUsername");
+      localStorage.removeItem("registeredEmail");
     },
   });
 
@@ -46,37 +46,29 @@ export default function PasswordPage() {
           <InputPrimary
             className="mt-12"
             type="password"
+            label="Password"
             placeholder="********"
+            isError={!!formik.touched.password && !!formik.errors.password}
+            errorMsg={formik.errors.password}
             onConfirm={(value: string) => {
-              console.log("value", value);
-
               formik.setFieldValue("password", value);
             }}
           />
 
-          {formik.touched.password && formik.errors.password && (
-            <p className="mt-2 text-sm text-red-400">
-              {formik.errors.password}
-            </p>
-          )}
-
           <InputPrimary
-            className="mt-4"
+            className="mt-8"
             type="password"
+            label="Konfirmasi Password"
+            isError={
+              !!formik.touched.confirmationPassword &&
+              !!formik.errors.confirmationPassword
+            }
+            errorMsg={formik.errors.confirmationPassword}
             placeholder="********"
             onConfirm={(value: string) => {
-              console.log("value", value);
-
               formik.setFieldValue("confirmationPassword", value);
             }}
           />
-
-          {formik.touched.confirmationPassword &&
-            formik.errors.confirmationPassword && (
-              <p className="mt-2 text-sm text-red-400">
-                {formik.errors.confirmationPassword}
-              </p>
-            )}
         </div>
 
         <PrimaryButton title="Lanjutkan" className="mt-8 md:mt-8" />
