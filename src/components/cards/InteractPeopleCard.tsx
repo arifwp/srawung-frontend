@@ -15,30 +15,30 @@ export default function InteractPeopleCard({
   return (
     <div
       className={clsx(
-        `w-full gap-4 flex flex-row justify-between items-center justify-center overflow-x-hidden`,
+        `w-full p-2 gap-4 flex flex-row justify-between items-center rounded-lg hover:bg-darkSecondary overflow-x-clip`,
         {
           className,
         }
       )}
       {...rest}
     >
-      <div className="w-full gap-4 flex flex-row items-center">
+      <div className="w-full gap-3 flex flex-row items-center">
         <Image
           className="rounded-full aspect-square object-cover"
           src={data.avatar}
-          height={60}
-          width={60}
+          height={40}
+          width={40}
           alt={data.name}
         />
 
         <div className="flex flex-col">
-          <p className="text-md font-semibold">{data.name}</p>
+          <p className="text-sm font-semibold">{data.name}</p>
 
-          <p className="text-sm opacity-secondary line-clamp-1">{data.bio}</p>
+          <p className="text-xs opacity-secondary line-clamp-1">{data.bio}</p>
         </div>
       </div>
 
-      <button className="w-[120px] h-[28px] bg-yellowPrimary rounded-full text-darkPrimary font-medium flex flex-row justify-center items-center">
+      <button className="w-[120px] h-[28px] bg-yellowPrimary rounded-full text-darkPrimary font-medium flex flex-row justify-center items-center cursor-pointer">
         Ikuti
       </button>
     </div>
