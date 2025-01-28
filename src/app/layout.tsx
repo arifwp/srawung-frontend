@@ -28,10 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="max-w-screen-xl mx-auto overflow-x-hidden">
+        <div className="max-w-screen-xl mx-auto flex overflow-x-hidden overflow-y-auto">
           {children}
         </div>
-        {/* {children} */}
       </body>
     </html>
   );
