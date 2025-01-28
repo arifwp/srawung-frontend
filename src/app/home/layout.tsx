@@ -8,7 +8,7 @@ export default function Layout({
     <div className="w-full h-full flex flex-row items-start">
       <Sidebar />
 
-      <div className="w-full h-full md:max-w-sidebar-mobile xl:max-w-sidebar-desktop ml-auto p-4">
+      <div className="w-full h-full p-8 ml-auto md:max-w-sidebar-mobile xl:max-w-sidebar-desktop">
         {children}
       </div>
 
