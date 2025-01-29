@@ -26,7 +26,7 @@ export default function page() {
         </p>
       </div>
 
-      <div className="w-full mt-8 gap-4 flex flex-col overflow-y-auto">
+      <div className="w-full mt-8 gap-4 flex flex-col overflow-y-auto no-scrollbar">
         {dummyInteractPeople.map((item: InteractPeopleInterface) => (
           <InteractPeopleCard key={item.id} data={item} />
         ))}
