@@ -4,7 +4,12 @@ import {
   MagnifyingGlassIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
-import { HomeModernIcon } from "@heroicons/react/24/solid";
+import {
+  HomeIcon as SolidHomeIcon,
+  MagnifyingGlassIcon as SolidMagnifyingGlassIcon,
+  EnvelopeIcon as SolidEnvelopeIcon,
+  UserCircleIcon as SolidUserCircleIcon,
+} from "@heroicons/react/24/solid";
 import { ComponentType, SVGProps } from "react";
 
 export interface NavigationInterface {
@@ -21,27 +26,27 @@ export const navigationList: NavigationInterface[] = [
     label: "Home",
     link: "/home",
     outlineIcon: HomeIcon,
-    filledIcon: HomeModernIcon,
+    filledIcon: SolidHomeIcon,
   },
   {
     id: 2,
     label: "Explore",
     link: "/explore",
     outlineIcon: MagnifyingGlassIcon,
-    filledIcon: MagnifyingGlassIcon,
+    filledIcon: SolidMagnifyingGlassIcon,
   },
   {
     id: 3,
     label: "Pesan",
-    link: "/messages",
+    link: "/message",
     outlineIcon: EnvelopeIcon,
-    filledIcon: EnvelopeIcon,
+    filledIcon: SolidEnvelopeIcon,
   },
   {
     id: 4,
     label: "Profile",
     link: "/profile",
     outlineIcon: UserCircleIcon,
-    filledIcon: UserCircleIcon,
+    filledIcon: SolidUserCircleIcon,
   },
 ];

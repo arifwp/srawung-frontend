@@ -8,7 +8,7 @@ export interface StoryInterface {
 export const dummyStory: StoryInterface[] = [
   {
     id: "1",
-    name: "ary bayu",
+    name: "ary bayu nur wicaksono ari joyo notolo",
     thumbnail: "/images/laptop.webp",
     isRead: 0,
   },
