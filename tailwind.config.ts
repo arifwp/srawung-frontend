@@ -10,8 +10,12 @@ export default {
   theme: {
     extend: {
       maxWidth: {
-        "sidebar-mobile": "calc(100% - 72px)",
-        "sidebar-desktop": "calc(100% - 140px)",
+        // "sidebar-mobile": "calc(100% - 72px)",
+        // "sidebar-desktop": "calc(100% - 140px)",
+        // "sidebar-sm": "calc(100% - 200px)",
+        "sidebar-md": "calc(100% - 300px)",
+        "sidebar-lg": "calc(100% - 400px)",
+        "sidebar-xl": "calc(100% - 700px)",
       },
       fontFamily: {
         sans: ["var(--font-poppins)", ...fontFamily.sans], // Menggunakan Poppins sebagai default font sans-serif
@@ -26,6 +30,7 @@ export default {
         yellowPrimary: "#F1CF18",
         yellowDark: "#88791D",
         placeholderColor: "#9BA3AF",
+        borderColor: "#444444",
       },
       opacity: {
         secondary: "0.6",
