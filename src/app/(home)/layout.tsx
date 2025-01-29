@@ -1,7 +1,7 @@
 import BottomNavigation from "@/components/navigations/BottomNavigation";
 import Sidebar from "@/components/navigations/Sidebar";
 
-export default function Layout({
+export default function HomeLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
