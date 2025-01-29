@@ -9,7 +9,9 @@ interface Props {
 
 export default function StoryCircle({ data, className }: Props) {
   return (
-    <div className={clsx(`w-fit gap-2 flex flex-col`, className)}>
+    <div
+      className={clsx(`w-fit gap-2 flex flex-col cursor-pointer`, className)}
+    >
       <div
         className={clsx(`w-[60px] h-[60px] relative rounded-full border-2 `, {
           "border-yellowPrimary": data.isRead === 0,
@@ -24,7 +26,7 @@ export default function StoryCircle({ data, className }: Props) {
         />
       </div>
 
-      <p className="text-xs text-center">{data.name}</p>
+      <p className="text-xs text-center line-clamp-1">{data.name}</p>
     </div>
   );
 }
