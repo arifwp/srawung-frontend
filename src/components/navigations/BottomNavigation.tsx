@@ -15,7 +15,7 @@ export default function BottomNavigation({ className = "", ...rest }: Props) {
   return (
     <div
       className={clsx(
-        `w-full h-[70px] p-2 mx-auto bg-darkSecondary justify-evenly items-center gap-4 fixed bottom-0 flex md:hidden`,
+        `w-full h-[60px] p-2 mx-auto bg-darkSecondary justify-evenly items-center gap-4 fixed bottom-0 flex md:hidden`,
         className
       )}
       {...rest}
