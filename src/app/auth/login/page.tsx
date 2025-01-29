@@ -64,7 +64,7 @@ export default function LoginPage() {
           />
 
           <InputPrimary
-            className="mt-12"
+            className="mt-4"
             placeholder="Password"
             label="Password"
             type="password"
