@@ -37,7 +37,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      <div className="w-full p-4 md:p-8 mb-12 gap-4 flex flex-col">
+      <div className="w-full p-4 md:p-8 mb-14 gap-4 flex flex-col">
         {dummyPostList.map((item) => (
           <PostCard key={item.id} data={item} />
         ))}
