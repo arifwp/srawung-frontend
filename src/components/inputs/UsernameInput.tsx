@@ -1,29 +1,24 @@
-"use client";
-
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Props {
   className?: string;
   inputValue?: string;
-  onConfirm: (value: string) => void;
-  placeholder?: string;
+  onConfirm: (input: string) => void;
   label?: string;
   isError?: boolean;
   errorMsg?: string;
-  type?: string;
+  placeholder?: string;
 }
 
-export default function InputPrimary({
+export default function UsernameInput({
   className,
   inputValue,
   onConfirm,
-  placeholder,
   label,
   isError,
   errorMsg,
-  type = "text",
-  ...props
+  placeholder,
 }: Props) {
   const [data, setData] = useState<string>(inputValue?.toString() || "");
 
@@ -36,8 +31,10 @@ export default function InputPrimary({
   }, [inputValue]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setData(e.target.value);
-    onConfirm(e.target.value);
+    const inputValue = e.target.value;
+    const filteredValue = inputValue.replace(/[^a-zA-Z0-9]/g, "");
+    onConfirm(filteredValue);
+    setData(filteredValue);
   };
 
   return (
@@ -46,12 +43,11 @@ export default function InputPrimary({
 
       <input
         className={clsx(`w-full p-3 input-primary rounded-md md:rounded-lg`)}
-        type={type}
+        type={"text"}
         onChange={handleChange}
         autoComplete="off"
         value={data}
         placeholder={placeholder ? placeholder : undefined}
-        {...props}
       />
 
       {isError && (
