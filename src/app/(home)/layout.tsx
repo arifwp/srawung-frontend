@@ -1,9 +1,21 @@
+"use client";
+
 import BottomNavigation from "@/components/navigations/BottomNavigation";
 import Sidebar from "@/components/navigations/Sidebar";
+import { usePathname } from "next/navigation";
 
 export default function HomeLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const pathname = usePathname();
+
+  const showBottomNavigation = [
+    "/home",
+    "/profile",
+    "/message",
+    "/explore",
+  ].includes(pathname);
+
   return (
     <div className="w-full h-full flex flex-row items-start">
       <Sidebar />
@@ -18,7 +30,7 @@ export default function HomeLayout({
         </div>
       </div>
 
-      <BottomNavigation />
+      {showBottomNavigation && <BottomNavigation />}
     </div>
   );
 }
