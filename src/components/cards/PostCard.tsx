@@ -1,3 +1,5 @@
+"use client";
+
 import { PostInterface } from "@/constants/Post";
 import {
   BookmarkIcon,
@@ -6,11 +8,12 @@ import {
   ShareIcon,
 } from "@heroicons/react/24/outline";
 import {
-  HeartIcon as SolidHeartIcon,
   BookmarkIcon as SolidBookmarkIcon,
+  HeartIcon as SolidHeartIcon,
 } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import ImagePostCard from "./ImagePostCard";
 
 interface Props {
@@ -19,11 +22,36 @@ interface Props {
 }
 
 export default function PostCard({ data, className }: Props) {
+  const router = useRouter();
+
+  const goToProfile = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    router.push(`/${data.username}`);
+  };
+
+  const goToDetailPost = (e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    // router.push(`/post/${data.id}`, );
+    const query = new URLSearchParams({
+      id: data.id,
+      content: data.content || "",
+      images: JSON.stringify(data.images || []),
+    }).toString();
+
+    router.push(`/post/${data.id}?${query}`);
+  };
+
   return (
     <div
       className={clsx(`w-full gap-4 flex flex-col cursor-pointer`, className)}
+      onClick={goToDetailPost}
     >
-      <div className="w-full gap-4 flex flex-row items-center cursor-pointer">
+      <div
+        className="w-fit gap-4 flex flex-row items-center cursor-pointer"
+        onClick={goToProfile}
+      >
         <Image
           className="aspect-square object-cover rounded-full"
           alt={data.name}
