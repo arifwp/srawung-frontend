@@ -2,19 +2,28 @@
 
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 import InputPrimary from "@/components/inputs/InputPrimary";
+import PasswordInput from "@/components/inputs/PasswordInput";
+import UsernameInput from "@/components/inputs/UsernameInput";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import * as yup from "yup";
 
 interface FormValues {
+  name: string;
+  username: string;
   email: string;
+  password: string;
 }
 
 const initialValues = {
+  name: "",
+  username: "",
   email: "",
+  password: "",
 };
-export default function page() {
+
+export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
@@ -25,6 +34,9 @@ export default function page() {
         .string()
         .required("Email harus diisi")
         .email("Format email salah"),
+      name: yup.string().required("Nama harus diisi"),
+      username: yup.string().required("Username harus diisi"),
+      password: yup.string().required("Password harus diisi"),
     }),
     onSubmit: (values: FormValues) => {
       console.log("values email", values.email);
@@ -33,8 +45,7 @@ export default function page() {
       setTimeout(() => {
         setIsLoading(false);
 
-        router.push("password");
-        localStorage.setItem("registeredEmail", values.email);
+        router.push("login");
       }, 3000);
     },
   });
@@ -53,18 +64,51 @@ export default function page() {
 
           <InputPrimary
             className="mt-12"
-            placeholder="Email"
+            placeholder="John Doe"
+            label="Name"
+            isError={!!formik.touched.name && !!formik.errors.name}
+            errorMsg={formik.errors.name}
+            onConfirm={(value: string) => {
+              formik.setFieldValue("name", value);
+            }}
+          />
+
+          <UsernameInput
+            className="mt-6"
+            placeholder="johndoe"
+            label="Username"
+            isError={!!formik.touched.username && !!formik.errors.username}
+            errorMsg={formik.errors.username}
+            onConfirm={(value: string) => {
+              formik.setFieldValue("username", value);
+            }}
+          />
+
+          <InputPrimary
+            className="mt-6"
+            placeholder="example@gmail.com"
             label="Email"
+            type="email"
             isError={!!formik.touched.email && !!formik.errors.email}
             errorMsg={formik.errors.email}
             onConfirm={(value: string) => {
               formik.setFieldValue("email", value);
             }}
           />
+
+          <PasswordInput
+            className="mt-6"
+            label="Password"
+            isError={!!formik.touched.password && !!formik.errors.password}
+            errorMsg={formik.errors.password}
+            onConfirm={(value: string) => {
+              formik.setFieldValue("password", value);
+            }}
+          />
         </div>
 
         <PrimaryButton
-          title="Lanjutkan"
+          title="Daftar"
           className="mt-8 md:mt-8"
           isLoading={isLoading}
         />
