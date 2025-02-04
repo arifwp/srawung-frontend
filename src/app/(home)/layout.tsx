@@ -2,11 +2,15 @@
 
 import BottomNavigation from "@/components/navigations/BottomNavigation";
 import Sidebar from "@/components/navigations/Sidebar";
+import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
-export default function HomeLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+interface Props {
+  className?: string;
+  children: React.ReactNode;
+}
+
+export default function HomeLayout({ className, children }: Props) {
   const pathname = usePathname();
 
   const showBottomNavigation = [
@@ -25,7 +29,12 @@ export default function HomeLayout({
       </div> */}
 
       <div className="w-full h-full mx-auto md:max-w-sidebar-md lg:max-w-sidebar-lg xl:max-w-sidebar-xl">
-        <div className="w-full h-full mx-auto max-w-4xl md:max-w-xl">
+        <div
+          className={clsx(
+            `w-full h-full mx-auto max-w-4xl md:max-w-xl`,
+            className
+          )}
+        >
           {children}
         </div>
       </div>
