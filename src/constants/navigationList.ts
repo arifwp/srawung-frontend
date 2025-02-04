@@ -50,3 +50,22 @@ export const navigationList: NavigationInterface[] = [
     filledIcon: SolidUserCircleIcon,
   },
 ];
+
+export interface NavigationPeopleInterface {
+  id: number;
+  label: string;
+  link: string;
+}
+
+export const navigationPeopleList: NavigationPeopleInterface[] = [
+  {
+    id: 1,
+    label: "Postingan",
+    link: "",
+  },
+  {
+    id: 2,
+    label: "Media",
+    link: "/media",
+  },
+];
