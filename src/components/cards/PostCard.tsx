@@ -61,9 +61,9 @@ export default function PostCard({ data, className }: Props) {
         />
 
         <div className="flex flex-col">
-          <p className="text-sm font-medium">{data.name}</p>
+          <p className="text-sm font-semibold">{data.name}</p>
 
-          <p className="text-sm opacity-secondary">{`@${data.username}`}</p>
+          <p className="text-xs opacity-secondary">{`@${data.username}`}</p>
         </div>
       </div>
 
